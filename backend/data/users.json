@@ -1,7 +1,7 @@
 [
   {
     "username": "admin1",
-    "password": "$2b$12$kTDKNfg9pOKSRr50qp.AcOTESbMV5ACYGCyQ5aHgpR20gXM5sX.ne",
+    "password": "Password1",
     "roles": [
       "admin",
       "approver"
@@ -21,4 +21,5 @@
       "creator"
     ]
   }
+
 ]
