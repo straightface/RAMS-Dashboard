@@ -9,10 +9,15 @@ export default function Navbar() {
 
   // Load theme preference from localStorage
   useEffect(() => {
-    const saved = localStorage.getItem("theme") || "light";
+  const saved = localStorage.getItem("theme");
+  if (saved) {
     setTheme(saved);
     if (saved === "dark") document.documentElement.classList.add("dark");
-  }, []);
+  } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+    setTheme("dark");
+    document.documentElement.classList.add("dark");
+  }
+}, []);
 
   const toggleTheme = () => {
     const newTheme = theme === "light" ? "dark" : "light";
