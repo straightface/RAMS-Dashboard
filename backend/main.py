@@ -112,9 +112,14 @@ if os.path.isdir(FRONTEND_BUILD):
     app.mount("/", StaticFiles(directory=FRONTEND_BUILD, html=True), name="frontend")
 
 # Fallback if no frontend build found
-@app.get("/")
-def root():
-    if os.path.isdir(FRONTEND_BUILD) and os.path.exists(os.path.join(FRONTEND_BUILD, "index.html")):
-        return FileResponse(os.path.join(FRONTEND_BUILD, "index.html"))
-    return HTMLResponse("<h3>RAMS Automater API running (frontend not built)</h3>")
+from fastapi.responses import FileResponse
+
+@app.get("/{full_path:path}")
+def serve_react_app(full_path: str):
+    """Serve React for all unknown paths."""
+    index_file = os.path.join(FRONTEND_BUILD, "index.html")
+    if os.path.exists(index_file):
+        return FileResponse(index_file)
+    return {"detail": "Frontend not built"}
+
 
