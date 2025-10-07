@@ -1,17 +1,53 @@
 {
-  "name": "rams-frontend",
+  "name": "rams-automater-frontend",
+  "version": "1.0.0",
   "private": true,
-  "version": "0.1.0",
- "scripts": {
-  "start": "react-scripts start",
-  "build": "react-scripts build",
-  "test": "react-scripts test"
-}
+  "description": "Frontend for the RAMS Automater Web App — a FastAPI + React system for generating RAMS documents with user roles and approvals.",
+  "author": "Bethany Davies",
+  "license": "MIT",
   "dependencies": {
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
+    "@headlessui/react": "^1.7.15",
+    "@heroicons/react": "^2.1.1",
+    "@tanstack/react-query": "^4.29.5",
+    "axios": "^1.4.0",
+    "jwt-decode": "^3.1.2",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-icons": "^5.2.1",
+    "react-router-dom": "^6.22.0",
     "react-scripts": "5.0.1",
-    "react-router-dom": "6.14.1"
-  }
-
+    "recharts": "^2.7.2",
+    "tailwindcss": "^3.3.5"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.17",
+    "postcss": "^8.4.35"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "lint": "eslint src --ext .js,.jsx,.ts,.tsx"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "homepage": "."
 }
+
