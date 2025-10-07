@@ -1,18 +1,25 @@
 """
-RAMS Automater Backend Package
+=====================================================
+ utils package — RAMS Automater Backend
+=====================================================
 
-This package contains the FastAPI backend logic for the RAMS Automater web application.
-It includes:
- - main.py → FastAPI entrypoint
- - utils/ → helper modules (security, file handling, etc.)
- - data/ → local JSON storage for users, templates, projects, and RAMS records
+This package contains helper modules for the backend.
+
+Modules:
+    - security.py : password hashing & JWT utilities
+
+Purpose:
+    The utils package provides supporting functions
+    for authentication, authorization, and general
+    backend utilities.
+
+Usage example:
+    from utils.security import hash_password, verify_password, create_token
 """
 
-# Optional: Pre-initialize directories
 import os
 
-BASE_DIR = os.path.dirname(__file__)
-DATA_DIR = os.path.join(BASE_DIR, "data")
+# Optional: print a short note for deployment diagnostics
+if os.getenv("RENDER") or os.getenv("ENV") == "production":
+    print("[INIT] utils package loaded for RAMS backend.")
 
-# Ensure the data directory exists when the backend is imported
-os.makedirs(DATA_DIR, exist_ok=True)
