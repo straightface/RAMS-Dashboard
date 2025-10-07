@@ -1,0 +1,24 @@
+[
+  {
+    "username": "admin1",
+    "password": "$2b$12$kTDKNfg9pOKSRr50qp.AcOTESbMV5ACYGCyQ5aHgpR20gXM5sX.ne",
+    "roles": [
+      "admin",
+      "approver"
+    ]
+  },
+  {
+    "username": "approver1",
+    "password": "$2b$12$aSNxk5ihIetawLkzmB8kI.vs.LUJ8ltcRJ0MRsptIfd1hn53BjP6q",
+    "roles": [
+      "approver"
+    ]
+  },
+  {
+    "username": "creator1",
+    "password": "$2b$12$U6D0CBaicyCNXRWpGzNoceRf3z7/..at0sNMWsZa/pPI65S9UlKIm",
+    "roles": [
+      "creator"
+    ]
+  }
+]
