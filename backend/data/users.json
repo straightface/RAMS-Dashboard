@@ -1,19 +1,15 @@
 [
   {
     "username": "admin1",
-    "password": "PLAINTEXT:admin123",
+    "password": "$2b$12$QZ6y35Ixoj7WmJkbv1d6rODpZk6zDqXHZ1OSCMbO3x/aqWb4XGcP6",
     "roles": ["admin", "approver"]
   },
   {
-    "username": "approver1",
-    "password": "PLAINTEXT:approver123",
-    "roles": ["approver"]
-  },
-  {
     "username": "creator1",
-    "password": "PLAINTEXT:creator123",
+    "password": "$2b$12$Y09w3qNpiqOqGJzOv4QhIehkp2xKCE80j8E3VrllKzF6YJ2JvWxF.",
     "roles": ["creator"]
   }
 ]
+
 
 
