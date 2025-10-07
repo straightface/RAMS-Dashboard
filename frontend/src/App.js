@@ -1,20 +1,45 @@
-import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import LoginPage from './pages/LoginPage';
-import DashboardAdmin from './pages/DashboardAdmin';
-import DashboardCreator from './pages/DashboardCreator';
-import DashboardApprover from './pages/DashboardApprover';
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Login from "./pages/Login";
+import AdminDashboard from "./pages/AdminDashboard";
+import CreatorDashboard from "./pages/CreatorDashboard";
+import ApproverDashboard from "./pages/ApproverDashboard";
+import ProtectedRoute from "./components/ProtectedRoute";
 
-export default function App(){
+function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={<LoginPage/>} />
-        <Route path='/login' element={<LoginPage/>} />
-        <Route path='/admin' element={<DashboardAdmin/>} />
-        <Route path='/creator' element={<DashboardCreator/>} />
-        <Route path='/approver' element={<DashboardApprover/>} />
+        <Route path="/login" element={<Login />} />
+        <Route
+          path="/admin"
+          element={
+            <ProtectedRoute roles={["admin"]}>
+              <AdminDashboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/creator"
+          element={
+            <ProtectedRoute roles={["creator", "admin"]}>
+              <CreatorDashboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/approver"
+          element={
+            <ProtectedRoute roles={["approver", "admin"]}>
+              <ApproverDashboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route path="*" element={<Login />} />
       </Routes>
     </BrowserRouter>
-  )
+  );
 }
+
+export default App;
+
