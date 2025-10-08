@@ -84,8 +84,8 @@ class LoginIn(BaseModel):
     username: str
     password: str
 
-@app.post("/login")
-def login(data: LoginIn):
+@app.post("/api/login")
+def login(credentials: LoginRequest):
     users = load(USERS_FILE)
     user = next((u for u in users if u["username"] == data.username), None)
     if not user or not verify_password(data.password, user["password"]):
@@ -131,6 +131,7 @@ def serve_react_app(full_path: str):
     if os.path.exists(index_file):
         return FileResponse(index_file)
     return {"detail": "Frontend not built"}
+
 
 
 
