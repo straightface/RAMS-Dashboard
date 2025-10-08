@@ -41,6 +41,16 @@ app.add_middleware(
 def health():
     return {"status": "ok"}
 
+@app.get("/api/test-users")
+def test_users():
+    import json, os
+    DATA = os.path.join(os.path.dirname(__file__), "data")
+    path = os.path.join(DATA, "users.json")
+    if not os.path.exists(path):
+        return {"error": "users.json not found"}
+    with open(path) as f:
+        return json.load(f)
+
 # ---------------------------------------------------------------------
 # ✅ Helpers for reading/writing data
 # ---------------------------------------------------------------------
@@ -121,5 +131,6 @@ def serve_react_app(full_path: str):
     if os.path.exists(index_file):
         return FileResponse(index_file)
     return {"detail": "Frontend not built"}
+
 
 
