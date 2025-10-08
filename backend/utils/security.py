@@ -39,10 +39,10 @@ def hash_password(password: str) -> str:
     return pwd_context.hash(password)
 
 
+from passlib.context import CryptContext
+pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+
 def verify_password(plain_password: str, hashed_password: str) -> bool:
-    """
-    Verify a plaintext password against its bcrypt hash.
-    """
     try:
         return pwd_context.verify(plain_password, hashed_password)
     except Exception:
@@ -92,3 +92,4 @@ if __name__ == "__main__":
     token = create_token({"username": "admin1", "roles": ["admin", "approver"]})
     print("\nToken:", token)
     print("Decoded:", decode_token(token))
+
