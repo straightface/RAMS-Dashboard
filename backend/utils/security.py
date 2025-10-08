@@ -91,5 +91,7 @@ if __name__ == "__main__":
     token = create_token({"username": "admin1", "roles": ["admin", "approver"]})
     print("\nToken:", token)
     print("Decoded:", decode_token(token))
+ create_token = create_access_token
+
 
 
