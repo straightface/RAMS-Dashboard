@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "";
+const API_URL = process.env.REACT_APP_API_URL || "";
 
 export const api = axios.create({
   baseURL: API_URL,
@@ -10,8 +10,7 @@ export const api = axios.create({
 });
 
 export const loginUser = async (username, password) => {
-  const res = await api.post("/login", { username, password });
-  return res.data;
+  return axios.post(`${API_URL}/api/login`, { username, password });
 };
 
 export const getHealth = async () => {
