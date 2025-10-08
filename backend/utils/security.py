@@ -42,7 +42,7 @@ def hash_password(password: str) -> str:
 from passlib.context import CryptContext
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
-def verify_password(plain_password: str, hashed_password: str) -> bool:
+def verify_password(plain_password, hashed_password):
     try:
         return pwd_context.verify(plain_password, hashed_password)
     except Exception:
@@ -52,18 +52,17 @@ def verify_password(plain_password: str, hashed_password: str) -> bool:
 # JWT utilities
 # --------------------------------------------------------------------
 
-def create_token(data: dict) -> str:
-    """
-    Create a signed JWT containing the provided payload.
+from jose import jwt
+from datetime import datetime, timedelta
 
-    The token includes an expiration time (default 24h).
-    """
+SECRET_KEY = "change_me_securely"
+ALGORITHM = "HS256"
+
+def create_access_token(data: dict, expires_delta: timedelta | None = None):
     to_encode = data.copy()
-    expire = datetime.datetime.utcnow() + datetime.timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
+    expire = datetime.utcnow() + (expires_delta or timedelta(minutes=30))
     to_encode.update({"exp": expire})
-
-    encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
-    return encoded_jwt
+    return jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
 
 
 def decode_token(token: str) -> dict | None:
@@ -92,4 +91,5 @@ if __name__ == "__main__":
     token = create_token({"username": "admin1", "roles": ["admin", "approver"]})
     print("\nToken:", token)
     print("Decoded:", decode_token(token))
+
 
